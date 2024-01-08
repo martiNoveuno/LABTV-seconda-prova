@@ -1,0 +1,48 @@
+.list-container {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card {
+    flex: 0 0 15%;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    transition: transform 230ms;
+}
+
+.card img:hover {
+    transform: scale(1.1);
+}
+
+.go-back-button {
+    margin-top: 10px;
+    margin-left: 55px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    color: rgb(190, 190, 190);
+    cursor: pointer;
+}
+
+.go-back-button:hover {
+    color: white;
+}
+
+/* per schermi grandi */
+@media screen and (min-width: 992px) {
+}
+
+/* per schermi di medie dimensioni */
+@media screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* per schermi piccoli */
+@media screen and (max-width: 767px) {
+    
+}

@@ -1,0 +1,47 @@
+<div class="form-container">
+    <h1 style="color: white; text-align: center;">Contattaci</h1>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <input type="text" formControlName="nome" placeholder="Nome">
+    <div class="error-message" *ngIf="contactForm.get('nome')?.touched && contactForm.get('nome')?.errors?.['required']">
+      Il nome è obbligatorio.
+    </div>
+  
+    <input type="text" formControlName="cognome" placeholder="Cognome">
+    <div class="error-message" *ngIf="contactForm.get('cognome')?.touched && contactForm.get('cognome')?.errors?.['required']">
+      Il cognome è obbligatorio.
+    </div>
+  
+    <input type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors">
+      <div class="error-message" *ngIf="contactForm.get('email')?.errors?.['required']">L'email è obbligatoria.</div>
+      <div class="error-message" *ngIf="contactForm.get('email')?.errors?.['email']">Inserisci un'email valida.</div>
+    </div>
+  
+    <input type="tel" formControlName="telefono" placeholder="Telefono">
+    <div class="error-message" *ngIf="contactForm.get('telefono')?.touched && contactForm.get('telefono')?.errors?.['required']">
+      Il telefono è obbligatorio.
+    </div>
+  
+    <textarea formControlName="messaggio" placeholder="Messaggio"></textarea>
+    <div class="error-message" *ngIf="contactForm.get('messaggio')?.touched && contactForm.get('messaggio')?.errors?.['required']">
+      Il messaggio è obbligatorio.
+    </div>
+
+    
+  
+    <div class="checkbox-container">
+    <label style="color: #868686;">Accetto l'informativa sulla privacy</label>
+    <input type="checkbox" formControlName="privacy">
+    <div class="error-message-checkbox" *ngIf="contactForm.get('privacy')?.touched && contactForm.get('privacy')?.errors?.['required']">
+      Accetta l'informativa sulla privacy.
+    </div>
+      </div>
+
+    <button type="submit" [disabled]="formSubmitted && !contactForm.valid">Invia</button>
+
+  <div *ngIf="formErrorMessage" class="error-message-sub">
+        {{ formErrorMessage }}
+  </div>
+  </form>
+</div>

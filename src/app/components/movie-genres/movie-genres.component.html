@@ -1,0 +1,23 @@
+<div class="container">
+    <h2 class="genre-title" (click)="viewMovieList(genreId)">{{ genreName }}
+        Movies <span class="r-a">&#10095;</span> 
+        <span class="show-all" style="color: rgb(201, 0, 0);"> Mostra tutti </span>
+    </h2>
+    <div class="card-container">
+        <ng-container *ngFor="let movie of movies" >
+            <div class="card" (click)="viewMovieDetails(movie.id)">
+                <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}">
+
+                <div class="overlay">
+                    <h4>{{ movie.title }}</h4>
+                    <p><strong>Voto {{ movie.vote_average }}</strong> - {{ movie.release_date | date: 'YYYY' }}</p>
+                    <div class="icons">
+                        <i class="fa-solid fa-play fa-2xl" title="Guarda ora"></i>
+                        <i class="fa-regular fa-heart fa-2xl" title="Aggiungi ai preferiti"></i>
+                        <i class="fa-solid fa-plus fa-2xl" title="Guarda più tardi"></i>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

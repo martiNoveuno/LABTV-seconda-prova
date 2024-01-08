@@ -1,0 +1,264 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #131313;
+    padding: 1rem;
+}
+
+.navbar-logo{
+    margin-left: 40px;
+}
+
+#logo {
+    height: 70px;
+    cursor: pointer;
+}
+
+.navbar-toggler {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-toggler:hover {
+    border: 2px solid #adb5bd;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.offcanvas {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #111111;
+    overflow-y: auto;
+    transition: right 0.5s;
+    z-index: 15;
+}
+
+.offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4em;
+    background-color: #111111;
+    padding: 10px;
+    color: white;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+.offcanvas-close {
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    color: white;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar-nav li {
+    padding: 10px;
+}
+
+.navbar-nav a {
+    text-decoration: none;
+    color: #adb5bd;
+    display: block;
+    padding: 8px;
+}
+
+.navbar-nav a:hover {
+    color: white;
+}
+
+nav a.active {
+    color: white;
+}
+
+.navbar-nav li ul {
+    list-style: none;
+    padding: 0;
+    display: none;
+}
+
+.navbar-nav li:hover ul {
+    display: block;
+}
+
+/* barra di ricerca */
+
+.search-box {
+    position: relative;
+    display: block;
+  }
+
+.search-input {
+    width: 250px;
+    font-size: 14px;
+    color: #d3d5da;
+    background-color: #0f0f0f;
+    border: 1px solid #d3d5da;
+    padding: 8px 25px 8px 40px;
+  }
+
+  .fa-magnifying-glass {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #d3d5da;
+  }
+
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #0f0f0f;
+    border-top: none;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    border-radius: 5px;
+  }
+  
+  .search-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
+  
+  .search-results li {
+    padding: 10px;
+    border-bottom: 1px solid #3b3b3b;
+    cursor: pointer;
+  }
+  
+  .search-results li:hover {
+    background-color: #1f1f1f;
+  }
+
+  /* personalizza l'intera barra di scorrimento */
+::-webkit-scrollbar {
+    height: 10px;
+    width: 10px; 
+}
+
+/* personalizza lo sfondo della barra di scorrimento */
+::-webkit-scrollbar-track {
+    background: #202020;
+}
+
+/* Personalizza la parte scorrevole della barra di scorrimento */
+::-webkit-scrollbar-thumb {
+    background: #969696; 
+    border-radius: 10px; 
+}
+
+/* modifica il colore del thumb quando è in hover o è attivo */
+::-webkit-scrollbar-thumb:hover {
+    background: #808080; 
+}
+
+/* per schermi grandi */
+@media screen and (min-width: 992px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .offcanvas-header {
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .offcanvas {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        height: auto;
+        width: auto;
+    }
+
+    .navbar-nav {
+        display: flex;
+        gap: 10px;
+    }
+
+    .navbar-nav li {
+        padding: 0;
+    }
+
+    .navbar-nav a {
+        padding: 0 15px;
+    }
+}
+
+/* per schermi medi */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    #logo {
+        height: 50px;
+    }
+
+    .search-input {
+        width: 200px;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+}
+
+/* per schermi piccoli */
+@media screen and (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-logo, .search-box, .navbar-toggler {
+        width: 100%; 
+        margin-left: 0;
+    }
+
+    .navbar-logo {
+        margin-bottom: 15px;
+    }
+
+    .navbar-toggler {
+        margin-top: 15px;
+    }
+
+    #logo {
+        height: 40px;
+    }
+
+    .search-input {
+        width: 90%;
+    }
+
+    .offcanvas {
+        right: 0; 
+    }
+
+}

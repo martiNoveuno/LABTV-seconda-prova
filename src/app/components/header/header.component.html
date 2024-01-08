@@ -1,0 +1,32 @@
+<nav class="navbar">
+    <div class="navbar-logo"><img src="../../../assets/images/logo-tipo2.png" alt="labtv" id="logo"></div>
+    <!-- campo di ricerca -->
+    <div class="search-box">
+        <input type="text" class="search-input" placeholder="Cerca il titolo..." [value]="searchTerm" (input)="onSearch($event)">
+        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    
+    <!-- lista dei risultati di ricerca -->
+    <div class="search-results" *ngIf="searchResults.length > 0">
+        <ul>
+            <li *ngFor="let movie of searchResults" (click)="viewMovieDetails(movie.id)">
+                {{ movie.title }} ({{ movie.release_date | date: 'yyyy' }})
+            </li>
+        </ul>
+    </div>
+    </div>
+    <button class="navbar-toggler" (click)="toggleOffcanvas()"><i class="fa-solid fa-bars fa-lg"
+            style="color: #fafafa;"></i></button>
+    <div class="offcanvas" [ngStyle]="{ right: offcanvasOpen ? '0px' : '-250px' }">
+        <div class="offcanvas-header">
+            LabTV Menu
+            <button class="offcanvas-close" (click)="toggleOffcanvas()"><i class="fa-solid fa-xmark fa-sm"
+                    style="color: #ffffff;"></i></button>
+        </div>
+        <ul class="navbar-nav">
+            <li><a routerLink="home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="areariservata" routerLinkActive="active">Area Riservata</a></li>
+            <li><a routerLink="contatti" routerLinkActive="active">Contatti</a>
+            </li>
+        </ul>
+    </div>
+</nav>

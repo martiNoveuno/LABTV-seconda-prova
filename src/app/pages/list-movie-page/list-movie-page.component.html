@@ -1,0 +1,11 @@
+<button class="go-back-button" (click)="goBack()">&#10094; Torna indietro</button>
+
+<div class="list-container" infiniteScroll [infiniteScrollDistance]="0.8" [infiniteScrollUpDistance]="2"
+    [infiniteScrollThrottle]="300" (scrolled)="onScroll()">
+    <div class="card" *ngFor="let movie of movies" (click)="showMovieDetails(movie.id)">
+        <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}">
+    </div>
+
+    <div *ngIf="isLoading"></div>
+
+</div>

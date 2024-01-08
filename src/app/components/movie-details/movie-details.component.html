@@ -1,0 +1,73 @@
+<button class="go-back-button" (click)="goBack()">&#10094; Torna indietro</button>
+
+<div class="movie-details-container" *ngIf="movieDetails">
+
+    <!-- sfondo della pagina -->
+    <div class="movie-background" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original/' + movieDetails.backdrop_path + ')'}"></div>
+
+    <div class="movie-content" >
+        <h1 class="movie-title">{{ movieDetails.title }}</h1>
+
+        <!-- immagine di copertina e dettagli del film -->
+        <div class="movie-info">
+            <img class="movie-poster" [src]="'https://image.tmdb.org/t/p/w300/' + movieDetails.poster_path">
+            
+            <div class="movie-description">
+                <p><strong>Trama: </strong>
+                  <ng-container *ngIf="movieDetails.overview; else noOverview">{{ movieDetails.overview }}</ng-container>
+                  <ng-template #noOverview><em>Trama non disponibile</em></ng-template>
+                </p>
+                <div class="movie-director" *ngIf="directorName">
+                  <p><strong>Regista: </strong> {{ directorName }}</p>
+                </div>
+                <p><strong>Data di uscita: </strong> {{ movieDetails.release_date | date }}</p>
+                <p><strong>Durata: </strong> {{ movieDetails.runtime }} minuti</p>
+                <p><strong>Genere: </strong>
+                    <ng-container *ngFor="let genre of movieDetails.genres; let isLast = last">
+                      {{ genre.name }}<span *ngIf="!isLast">, </span>
+                    </ng-container></p>                
+                  <p><strong>Valutazione: </strong> {{ movieDetails.vote_average | number: '1.0-0'}}</p>
+
+              <!-- pulsante per mostrare il trailer -->
+              <div *ngIf="hasTrailer">
+                  <button class="trailer-button" (click)="movieTrailer(movieID)" (click)="trailerModal(true)">Guarda il trailer</button>
+              </div>
+             <!-- se il trailer non è disponibile -->
+              <div *ngIf="!hasTrailer">
+                <p>Trailer non disponibile per questo film</p>
+              </div>
+
+            </div>
+        </div>
+    </div>
+        <!-- dettagli del cast -->
+        <div class="cast-container" *ngIf="castDetails">
+            <h3>CAST</h3>
+            <div class="list-cast">
+              <div class="cast-member" *ngFor="let member of castDetails.cast">
+                <img [src]="getProfileImageUrl(member.profile_path)">
+                <p><strong>{{ member.name }}</strong> 
+                <p><em>{{ member.character }}</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- lista dei film simili -->
+          <div class="similar-movies-container" *ngIf="similarMovies.length > 0">
+            <h3>Film Simili</h3>
+            <div class="similar-movies">
+                <div class="similar-movie-card" *ngFor="let movie of similarMovies" (click)="viewMovieDetails(movie.id)">
+                    <img [src]="'https://image.tmdb.org/t/p/w300/' + movie.poster_path">
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- modale per il trailer -->
+<ng-container *ngIf="showTrailerModal">
+  <div class="modal-backdrop"></div>
+  <div class="modal">
+    <iframe [src]="trailerURL" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+    <button class="close-button" (click)="trailerModal(false)">Chiudi</button>
+  </div>
+</ng-container>

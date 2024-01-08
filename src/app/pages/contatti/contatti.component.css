@@ -1,0 +1,105 @@
+.form-container {
+    max-width: 600px;
+    min-height: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #b4b4b4b7;
+    border-radius: 5px;
+    background-color: #181818;
+    box-shadow: 2px 5px 20px 1px #4747477e
+  }
+  
+  .form-container input,
+  .form-container textarea {
+    width: 60%;
+    padding: 10px;
+    margin-left: 100px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+
+  .checkbox-container {
+    position: relative;
+    left: 100px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+   .form-container input[type="checkbox"] {
+    margin: 0;
+    position: relative;
+    right: 160px;
+  }
+  
+  .form-container button {
+    width: 60%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 100px;
+  }
+  
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-container .error-message {
+    font-style: oblique;
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+  }
+
+  .error-message-checkbox {
+    margin-top: 10px;
+    color: red;
+    font-style: oblique;
+  }
+
+  .error-message-sub{
+    color: red;
+    margin: 10px 120px;
+  }
+
+  .form-container input:focus,
+.form-container textarea:focus {
+  outline: none; 
+  border: 2px solid #0057b383;
+}
+
+/* per schermi grandi */
+@media screen and (min-width: 992px) {
+  
+}
+
+/* per schermi di medie dimensioni */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+  }
+
+  .form-container input[type="checkbox"] {
+    bottom: 15px;
+    left: 100px;
+  }
+}
+
+/* per schermi piccoli */
+@media screen and (max-width: 767px) {
+    .form-container {
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .form-container input[type="checkbox"] {
+      right: 160px;
+     top: 4px;
+    }
+}
+  

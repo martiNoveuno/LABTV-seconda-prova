@@ -1,0 +1,27 @@
+<app-carousel></app-carousel>
+
+<!-- lista film popolari -->
+<div class="container">
+    <h2 style="color: white;">Popular Movies</h2>
+    <div class="arrow left-arrow" (click)="scrollLeft()">&#10094;</div>
+    <div class="card-container" #cardContainer>
+        <ng-container *ngFor="let movie of movies">
+            <div class="card" (click)="viewMovieDetails(movie.id)">
+                <img src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}">
+            </div>
+        </ng-container>
+    </div>
+    <div class="arrow right-arrow" (click)="scrollRight()">&#10095;</div>
+</div>
+
+<!-- lista di film a seconda del genere -->
+<app-movie-genres [genreId]="actionGenreId" genreName="Action"></app-movie-genres>
+<app-movie-genres [genreId]="adventureGenreId" genreName="Adventure"></app-movie-genres>
+<app-movie-genres [genreId]="animationGenreId" genreName="Animation"></app-movie-genres>
+<app-movie-genres [genreId]="misteryGenreId" genreName="Mistery"></app-movie-genres>
+<app-movie-genres [genreId]="crimeGenreId" genreName="Crime"></app-movie-genres>
+<app-movie-genres [genreId]="documentaryGenreId" genreName="Documentary"></app-movie-genres>
+<app-movie-genres [genreId]="dramaGenreId" genreName="Drama"></app-movie-genres>
+<app-movie-genres [genreId]="scienceGenreId" genreName="Science Fiction"></app-movie-genres>
+<app-movie-genres [genreId]="thrillerGenreId" genreName="Thriller"></app-movie-genres>
+<app-movie-genres [genreId]="tvMovieGenreId" genreName="TV Movie"></app-movie-genres>
